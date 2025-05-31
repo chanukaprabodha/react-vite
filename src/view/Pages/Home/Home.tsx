@@ -1,9 +1,16 @@
 import {useEffect, useState} from "react";
 import {Product} from "../../common/Product/Product.tsx";
 
+type ProductData = {
+    id: number,
+    name: string,
+    price: number,
+    currency: string,
+    image: string
+}
 
 export function Home() {
-    const [products, setProducts] = useState([]);
+    const [products, setProducts] = useState<ProductData[]>([]);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -26,7 +33,7 @@ export function Home() {
                             items-center justify-center mx-auto -translate-y-[-50%]">
                     {
                     products.map((product) => (
-                        <Product data={product} />
+                        <Product key={product.id} data={product} />
                     ))
                 }
                 </div>
