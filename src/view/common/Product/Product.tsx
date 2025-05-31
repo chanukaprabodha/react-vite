@@ -1,17 +1,22 @@
-import potato from "../../../assets/images/products/potato.png";
 type ProductData = {
     id: number,
     name: string,
     price: number,
     currency: string,
-    imageUrl: string
+    image: string
 }
 
 type ProductProps = {
     data: ProductData
 }
 
+const images: Record<string, string> = import.meta.glob('../../../assets/images/products/*',
+    {eager: true, import: 'default'});
+
 export function Product({data}: ProductProps) {
+    // console.log(images);
+    // console.log(`../../../assets/images/products/${data.image}`)
+    const image = images[`../../../assets/images/products/${data.image}`];
     return (
         <>
             <div
@@ -19,7 +24,7 @@ export function Product({data}: ProductProps) {
                                 rounded-2xl shadow-xl/30 flex flex-col justify-center items-center"
             >
                 <div>
-                    <img src={potato as string} alt="" className="w-20 h-20"/>
+                    <img src={image} alt="" className="w-20 h-20"/>
                 </div>
                 <div className='flex items-center'>
                     <h3 className='text-[16px] text-[#333] pl-2 text-lg'>{data.name}</h3>
