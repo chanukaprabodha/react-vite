@@ -1,0 +1,54 @@
+.navbar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 36px;
+    background-color: #333;
+    color: white;
+}
+.navbar .navbar_logo{
+    display: flex;
+    align-items: center;
+}
+
+.navbar .navbar_logo img{
+    border-radius: 50%;
+    border-color: aliceblue;
+    width: 60px;
+    height: 60px;
+}
+.navbar .navbar_links nav ul{
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+.navbar .navbar_links nav ul a{
+    color: white;
+    text-decoration: none;
+}
+.navbar .navbar_links nav ul a:hover{
+    color: #dad7cb;
+}
+.sign-in-btn {
+    background-color: #4a90e2;
+    border: none;
+    border-radius: 6px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.sign-in-btn a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    display: inline-block;
+}
+
+.sign-in-btn:hover {
+    background-color: #357ab8;
+}
+
+

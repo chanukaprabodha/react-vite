@@ -1,0 +1,37 @@
+[
+  {
+    "id": 1,
+    "name": "Potato",
+    "price": "400",
+    "currency": "LKR",
+    "image": "potato.png"
+  },
+  {
+    "id": 2,
+    "name": "Avocado",
+    "price": "300",
+    "currency": "LKR",
+    "image": "avocado.png"
+  },
+  {
+    "id": 3,
+    "name": "Tomato",
+    "price": "200",
+    "currency": "LKR",
+    "image": "tomato.png"
+  },
+  {
+    "id": 4,
+    "name": "Cassava",
+    "price": "100",
+    "currency": "LKR",
+    "image": "cassava.png"
+  },
+  {
+    "id": 5,
+    "name": "Cucumber",
+    "price": "100",
+    "currency": "LKR",
+    "image": "cucumber.png"
+  }
+]
