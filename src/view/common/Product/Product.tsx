@@ -1,3 +1,6 @@
+import {useState} from "react";
+import {ModifyCart} from "../ModifyCart/ModifyCart.tsx";
+
 type ProductData = {
     id: number,
     name: string,
@@ -17,6 +20,13 @@ export function Product({data}: ProductProps) {
     // console.log(images);
     // console.log(`../../../assets/images/products/${data.image}`)
     const image = images[`../../../assets/images/products/${data.image}`];
+
+    const [isActive, setIsActive] = useState(false);
+
+    const addToCart = () => {
+        setIsActive(true);
+    };
+
     return (
         <>
             <div
@@ -35,10 +45,20 @@ export function Product({data}: ProductProps) {
                     </div>
                 </div>
                 <div>
-                    <button
-                        className='bg-green-600 border-0 rounded-[10px] mt-[8px] p-2 cursor-pointer text-white hover:bg-green-700'>
-                        Add to Cart
-                    </button>
+                    {
+                        isActive ? (
+                            <ModifyCart data={{
+                                product:data
+                            }}/>
+                        ):(
+                            <button
+                                className='bg-green-600 border-0 rounded-[10px] mt-[8px] p-2
+                                   cursor-pointer text-white hover:bg-green-700'
+                                onClick={addToCart}>
+                                Add to Cart
+                            </button>
+                        )
+                    }
                 </div>
             </div>
         </>
