@@ -29,8 +29,7 @@ export function Home() {
         <>
             <div>
                 <div
-                    className="flex flex-wrap ml-[1px] mt-[5px] mb-[5px] gap-5
-                            items-center justify-center mx-auto -translate-y-[-50%]">
+                    className="flex gap-5">
                     {
                     products.map((product) => (
                         <Product key={product.id} data={product} />
