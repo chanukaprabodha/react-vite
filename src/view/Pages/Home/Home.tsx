@@ -1,28 +1,18 @@
-import {useEffect, useState} from "react";
+import {useEffect} from "react";
 import {Product} from "../../common/Product/Product.tsx";
-
-type ProductData = {
-    id: number,
-    name: string,
-    price: number,
-    currency: string,
-    image: string
-}
+import {useDispatch, useSelector} from "react-redux";
+import type {AppDispatch, RootState} from "../../../store/store.ts";
+import {getAllProducts} from "../../../slices/productSlice.ts";
 
 export function Home() {
-    const [products, setProducts] = useState<ProductData[]>([]);
+
+    const dispatch = useDispatch<AppDispatch>();
+
+    const {list} = useSelector(
+        (state: RootState) => state.products);
 
     useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const responsePromise = await fetch('./product-data.json');
-                const jsonData = await responsePromise.json();
-                setProducts(jsonData);
-            }catch (error) {
-                console.error('Error fetching product data:', error);
-            }
-        }
-        fetchData();
+        dispatch(getAllProducts());
     }, []);
 
     return (
@@ -31,10 +21,10 @@ export function Home() {
                 <div
                     className="flex gap-5">
                     {
-                    products.map((product) => (
-                        <Product key={product.id} data={product} />
-                    ))
-                }
+                        list.map((product) => (
+                            <Product key={product.id} data={product}/>
+                        ))
+                    }
                 </div>
             </div>
         </>

@@ -1,13 +1,10 @@
 import {useState} from "react";
 import {ModifyCart} from "../ModifyCart/ModifyCart.tsx";
+import type {ProductData} from "../../../modal/ProductData.ts";
+import {useDispatch} from "react-redux";
+import type {AppDispatch} from "../../../store/store.ts";
+import {addItemToCart} from "../../../slices/cartSlice.ts";
 
-type ProductData = {
-    id: number,
-    name: string,
-    price: number,
-    currency: string,
-    image: string
-}
 
 type ProductProps = {
     data: ProductData
@@ -21,9 +18,12 @@ export function Product({data}: ProductProps) {
     // console.log(`../../../assets/images/products/${data.image}`)
     const image = images[`../../../assets/images/products/${data.image}`];
 
+    const dispatch = useDispatch<AppDispatch>();
+
     const [isActive, setIsActive] = useState(false);
 
     const addToCart = () => {
+        dispatch(addItemToCart(data));
         setIsActive(true);
     };
 
@@ -48,9 +48,9 @@ export function Product({data}: ProductProps) {
                     {
                         isActive ? (
                             <ModifyCart data={{
-                                product:data
+                                product: data
                             }}/>
-                        ):(
+                        ) : (
                             <button
                                 className='bg-green-600 border-0 rounded-[10px] mt-[8px] p-2
                                    cursor-pointer text-white hover:bg-green-700'

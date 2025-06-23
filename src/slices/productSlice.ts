@@ -1,8 +1,8 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
-import type {RootState} from "../store/store.ts";
+import type {ProductData} from "../modal/ProductData.ts";
 
-interface ProductState{
-    list: [],
+interface ProductState {
+    list: ProductData[],
     error: string | null | undefined
 }
 
@@ -22,13 +22,13 @@ export const getAllProducts = createAsyncThunk(
 const productSlice = createSlice({
     name: 'product',
     initialState: initialState,
-    reducers:{},
-    extraReducers:(builder) => {
-        builder.addCase(getAllProducts.pending,() => {
+    reducers: {},
+    extraReducers: (builder) => {
+        builder.addCase(getAllProducts.pending, () => {
             alert('Products are still loading...')
-        }).addCase(getAllProducts.fulfilled, (state:RootState, action) => {
+        }).addCase(getAllProducts.fulfilled, (state: ProductState, action) => {
             state.list = action.payload;
-        }).addCase(getAllProducts.rejected, (state:RootState, action) => {
+        }).addCase(getAllProducts.rejected, (state: ProductState, action) => {
             state.error = (action.payload as Error)?.message || 'Failed to fetch products';
             alert(`Error fetching products: ${state.error}`);
         })

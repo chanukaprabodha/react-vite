@@ -3,7 +3,7 @@ import {Route, Routes} from "react-router-dom";
 import {Home} from "../../Pages/Home/Home.tsx";
 import {About} from "../../Pages/About/About.tsx";
 import {Contact} from "../../Pages/Contact/Contact.tsx";
-// import * as React from "react";
+import * as React from "react";
 import { ShoppingCart } from "../../Pages/Shopping Cart/ShoppingCart.tsx";
 import { itemsList } from "../ModifyCart/ModifyCart.tsx";
 
