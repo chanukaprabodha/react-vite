@@ -1,5 +1,6 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 import type {ProductData} from "../modal/ProductData.ts";
+import Swal from "sweetalert2";
 
 interface ProductState {
     list: ProductData[],
@@ -25,12 +26,23 @@ const productSlice = createSlice({
     reducers: {},
     extraReducers: (builder) => {
         builder.addCase(getAllProducts.pending, () => {
-            alert('Products are still loading...')
+            Swal.fire({
+                title: 'Loading',
+                text: 'Please wait while products are being loaded',
+                icon: 'info',
+                showConfirmButton: false,
+                timer: 2000
+            })
         }).addCase(getAllProducts.fulfilled, (state: ProductState, action) => {
             state.list = action.payload;
         }).addCase(getAllProducts.rejected, (state: ProductState, action) => {
             state.error = (action.payload as Error)?.message || 'Failed to fetch products';
-            alert(`Error fetching products: ${state.error}`);
+            Swal.fire({
+                title: 'Error',
+                text: state.error,
+                icon: 'error',
+                confirmButtonText: 'OK'
+            })
         })
     }
 });
