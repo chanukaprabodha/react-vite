@@ -1,13 +1,12 @@
-// import './Navbar.css';
 import logo from '../../../assets/images/logo.png'
 import cart from '../../../assets/images/shop.png';
-import { Link } from "react-router-dom";
+import {Link} from "react-router-dom";
 
 export function Navbar() {
     return (
         <div className="navbar flex items-center justify-between px-9 bg-gradient-to-br from-green-100 to-green-50">
             <div className="navbar_logo flex items-center">
-                <img src={logo as string} alt="" className='w-16' />
+                <img src={logo as string} alt="" className='w-16'/>
                 <p className="business_name ps-1 tracking-[0.2rem] font-semibold ">GreenHarvest</p>
             </div>
             <div className="navbar_links">
@@ -22,7 +21,9 @@ export function Navbar() {
                         <li className='hover:text-[#dad7cb]'>
                             <Link to="/contact">Contact</Link>
                         </li>
-                        <li><Link to={"/shoppingCart"}><img src={cart as string} alt="" className='w-12 hover:scale-125 ease-in-out duration-300' /></Link></li>
+                        <li><Link to={"/shoppingCart"}><img src={cart as string} alt=""
+                                                            className='w-12 hover:scale-125 ease-in-out duration-300'/></Link>
+                        </li>
                     </ul>
                 </nav>
             </div>

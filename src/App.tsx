@@ -2,7 +2,6 @@ import './App.css';
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import {DefaultLayout} from "./view/common/DefaultLayout/DefaultLayout.tsx";
 import {Login} from "./view/Pages/Login/Login.tsx";
-import * as React from "react";
 
 function App() {
     return (

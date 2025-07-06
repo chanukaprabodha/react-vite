@@ -11,32 +11,13 @@ export function ModifyCart({data}: ModifyCartProps) {
 
     const dispatch = useDispatch<AppDispatch>();
 
-    /*useEffect(() => {
-        const existingItem = itemsList.find(item => item.product.id === data.product.id);
-        if (existingItem){
-            existingItem.itemCount = itemCount;
-        }else {
-            itemsList.push({
-                product: data.product,
-                itemCount: itemCount
-            });
-        }
-        console.log(itemsList);
-    }, [itemCount, data])*/
-
     const item = useSelector(
-        (state:RootState) => state.cart.items.find(cartItem => cartItem.product.id === data.id
-    ));
+        (state: RootState) => state.cart.items.find(cartItem => cartItem.product.id === data.id
+        ));
 
-    /*console.log(data);
-    console.log(item);*/
 
     const decreaseItemCount = () => {
-        /*setItemCount(
-            prevValue => prevValue > 1 ? prevValue - 1 : (alert("Item count cannot be less than 1"), prevValue)
-        )*/
         if (item && item.itemCount > 1) {
-            // setItemCount(prevValue => prevValue - 1);
             dispatch(decreaseQuantity(data.id));
         } else {
             Swal.fire({
@@ -47,11 +28,8 @@ export function ModifyCart({data}: ModifyCartProps) {
             })
         }
     };
+
     const increaseItemCount = () => {
-        /*setItemCount(
-            prevValue => prevValue + 1
-        );*/
-        // setItemCount(prevValue => prevValue + 1);
         dispatch(increaseQuantity(data.id));
     };
     return (

@@ -13,13 +13,9 @@ const images: Record<string, string> = import.meta.glob('../../../assets/images/
     {eager: true, import: 'default'});
 
 export function Product({data}: ProductProps) {
-    // console.log(images);
-    // console.log(`../../../assets/images/products/${data.image}`)
     const image = images[`../../../assets/images/products/${data.image}`];
 
     const dispatch = useDispatch<AppDispatch>();
-
-    // const [isActive, setIsActive] = useState(false);
 
     const item = useSelector(
         (state: RootState) =>
@@ -28,7 +24,6 @@ export function Product({data}: ProductProps) {
 
     const addToCart = () => {
         dispatch(addItemToCart(data));
-        // setIsActive(true);
     };
 
     return (
