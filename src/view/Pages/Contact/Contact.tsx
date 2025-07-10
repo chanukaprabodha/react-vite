@@ -1,11 +1,17 @@
 import {useForm} from "react-hook-form";
+import {useDispatch} from "react-redux";
+import type {AppDispatch} from "../../../store/store.ts";
+import {sendMessage} from "../../../slices/contactSlice.ts";
 
 export function Contact() {
+
+    const dispatch = useDispatch<AppDispatch>();
 
     const {
         register,
         handleSubmit,
-        formState: {errors}
+        formState: {errors},
+        reset
     } = useForm<FormData>();
 
     type FormData = {
@@ -15,8 +21,8 @@ export function Contact() {
     }
 
     const onSubmit = (data: FormData) => {
-        console.log("Form data Submitted...!", data);
-        alert(`submitted your case: ${data.subject}`);
+        dispatch(sendMessage(data));
+        reset();
     }
 
     return (
